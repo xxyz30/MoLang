@@ -50,8 +50,11 @@ public class TokenIterator {
                 while (nameLength < code.length() && (Character.isLetterOrDigit(getStringAt(nameLength).charAt(0)) || getStringAt(nameLength).equals("_") || getStringAt(nameLength).equals("."))) {
                     nameLength++;
                 }
+//                while (nameLength < code.length() && (Character.isLetterOrDigit(getStringAt(nameLength).charAt(0))) || getStringAt(nameLength).equals("_")) {
+//                    nameLength++;
+//                }
 
-                String value = code.substring(index, nameLength).toLowerCase();
+                String value = code.substring(index, nameLength);
                 TokenType token = TokenType.bySymbol(value);
 
                 if (token == null) {

@@ -14,11 +14,11 @@ public class NameParselet implements PrefixParselet {
     @Override
     public Expression parse(MoLangParser parser, Token token) {
         List<Expression> args = parser.parseArgs();
-        String name = parser.fixNameShortcut(token.getText());
-
+//        String name = parser.fixNameShortcut(token.getText());
+        String name = token.getText();
         Expression nameExpr = new NameExpression(name);
 
-        if (args.size() > 0 || parser.getNameHead(name).equals("query") || parser.getNameHead(name).equals("math")){
+        if (!args.isEmpty()){
             return new FuncCallExpression(nameExpr, args.toArray(new Expression[0]));
         }
 

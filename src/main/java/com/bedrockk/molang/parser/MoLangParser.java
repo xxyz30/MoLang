@@ -54,6 +54,7 @@ public final class MoLangParser {
         infixParselets.put(TokenType.COALESCE, new GenericBinaryOpParselet(Precedence.COALESCE));
         infixParselets.put(TokenType.ARROW, new GenericBinaryOpParselet(Precedence.ARROW));
         infixParselets.put(TokenType.ASSIGN, new AssignParselet());
+        infixParselets.put(TokenType.MEMBER, new MemberParselet());
     }
 
     public MoLangParser(TokenIterator iterator) {

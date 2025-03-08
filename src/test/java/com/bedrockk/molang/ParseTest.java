@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.List;
 
 @DisplayName("Parse Tests")
 public class ParseTest {
@@ -31,5 +32,12 @@ public class ParseTest {
     @DisplayName("Parse File 4")
     public void parse4() throws IOException {
         Assertions.assertDoesNotThrow(() -> MoLang.parse(getClass().getClassLoader().getResourceAsStream("expr4.txt")));
+    }
+
+    @Test
+    @DisplayName("Parse Member Test")
+    public void parseMemberExpr() throws IOException {
+        List<Expression> parse = MoLang.parse(getClass().getClassLoader().getResourceAsStream("member.txt"));
+        System.out.println(parse);
     }
 }

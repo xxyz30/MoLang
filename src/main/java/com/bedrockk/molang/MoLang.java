@@ -48,4 +48,9 @@ public class MoLang {
     public static MoLangRuntime createRuntime() {
         return new MoLangRuntime();
     }
+
+    public static String astToString(List<Expression> expressions) {
+
+        return "TODO";
+    }
 }

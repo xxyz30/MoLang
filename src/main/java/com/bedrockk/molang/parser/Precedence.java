@@ -7,6 +7,7 @@ public enum Precedence {
     ASSIGNMENT,
     CONDITIONAL,
     ARRAY_ACCESS,
+    MEMBER,
 
     COALESCE,
 

@@ -28,6 +28,7 @@ public enum TokenType {
     COLON(":"),
     SEMICOLON(";"),
     BANG("!"),
+    MEMBER("."),
 
     RETURN("return"),
     CONTINUE("continue"),
