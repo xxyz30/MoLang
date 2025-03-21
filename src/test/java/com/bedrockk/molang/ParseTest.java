@@ -1,5 +1,6 @@
 package com.bedrockk.molang;
 
+import com.bedrockk.molang.utils.FileUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,5 +40,19 @@ public class ParseTest {
     public void parseMemberExpr() throws IOException {
         List<Expression> parse = MoLang.parse(getClass().getClassLoader().getResourceAsStream("member.txt"));
         System.out.println(parse);
+    }
+    @Test
+    @DisplayName("Syntax Error Test")
+    public void syntaxError() throws IOException {
+        String s = FileUtils.readFile(getClass().getClassLoader().getResourceAsStream("syntaxError.txt"));
+
+        for (String expr : s.split("\n")) {
+            try {
+                MoLang.parse(expr);
+                System.out.println("success: " + expr);
+            } catch (Exception e) {
+                System.err.println( e.getMessage());
+            }
+        }
     }
 }

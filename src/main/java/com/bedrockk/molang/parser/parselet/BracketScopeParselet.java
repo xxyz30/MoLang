@@ -19,7 +19,7 @@ public class BracketScopeParselet implements PrefixParselet {
 
         if (!parser.matchToken(TokenType.CURLY_BRACKET_RIGHT)) {
             do {
-                if (parser.matchToken(TokenType.CURLY_BRACKET_RIGHT, false)) {
+                if (parser.matchToken(TokenType.CURLY_BRACKET_RIGHT, false, false)) {
                     break;
                 }
 

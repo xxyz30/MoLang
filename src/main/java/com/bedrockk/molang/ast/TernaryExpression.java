@@ -5,12 +5,15 @@ import com.bedrockk.molang.runtime.MoLangEnvironment;
 import com.bedrockk.molang.runtime.MoScope;
 import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.bedrockk.molang.runtime.value.MoValue;
+import lombok.NonNull;
 import lombok.Value;
 
 @Value
 public class TernaryExpression implements Expression {
 
+    @NonNull
     Expression condition;
+    @NonNull
     Expression thenExpr;
     Expression elseExpr;
 

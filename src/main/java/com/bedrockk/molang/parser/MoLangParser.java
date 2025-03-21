@@ -71,7 +71,12 @@ public final class MoLangParser {
             } else {
                 break;
             }
-        } while (matchToken(TokenType.SEMICOLON));
+            if (matchToken(TokenType.SEMICOLON) || matchToken(TokenType.EOF)) {
+                continue;
+            }
+            throw new IllegalArgumentException("Except SEMICOLON or EOF, but got '" + consumeToken().getType() + "'");
+
+        } while (true);
 
         return exprs;
     }
@@ -180,13 +185,16 @@ public final class MoLangParser {
     }
 
     public boolean matchToken(TokenType expectedType) {
-        return matchToken(expectedType, true);
+        return matchToken(expectedType, true, false);
     }
 
-    public boolean matchToken(TokenType expectedType, boolean consume) {
+    public boolean matchToken(TokenType expectedType, boolean consume, boolean throwIfNotMatch) {
         Token token = readToken();
 
         if (token == null || !token.getType().equals(expectedType)) {
+            if (throwIfNotMatch) {
+                throw new RuntimeException("Expected token " + expectedType.name() + ",but " + (token == null ? "null" : token.getType().name()) + " given");
+            }
             return false;
         } else {
             if (consume) {
