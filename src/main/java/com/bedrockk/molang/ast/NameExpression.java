@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class NameExpression implements Expression {
 
     String name;
-    Pattern pattern = Pattern.compile("(math|query|q|variable|v)\\.[\\w_.]+");
+    Pattern pattern = Pattern.compile("(math|query|q|variable|v|temp|t)\\.[\\w_.]+");
 
     public NameExpression(final String name) {
         assert name != null;
